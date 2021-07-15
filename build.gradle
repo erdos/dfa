@@ -1,12 +1,13 @@
 plugins {
-    id 'net.ltgt.errorprone' version '2.0.1'
+    // id 'net.ltgt.errorprone' version '2.0.1'
     id 'java'
+    id 'groovy'
 }
 
 apply plugin: 'java'
-apply plugin: 'net.ltgt.errorprone'
-apply plugin: 'groovy'
+// apply plugin: 'net.ltgt.errorprone'
 apply plugin: 'idea'
+apply plugin: 'groovy'
 
 // apply plugin: 'cobertura'
 apply plugin: 'maven'
@@ -18,20 +19,14 @@ version '0.1.0-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-sourceSets {
-    test {
-        groovy.srcDirs = ["src/test/groovy"]
-    }
-}
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile('org.codehaus.groovy:groovy:3.0')
-    testCompile "org.spockframework:spock-core:2.0-groovy-3.0"
-    errorprone "com.google.errorprone:error_prone_core:latest.release"
+    testCompile 'org.codehaus.groovy:groovy:3.0.8'
+    testCompile platform('org.spockframework:spock-bom:2.0-groovy-3.0')
+    testCompile 'org.spockframework:spock-core'
 }
 
 // used by error-prone
@@ -41,7 +36,7 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.named("compileTestJava").configure {
-    options.errorprone.enabled = false
+    //options.errorprone.enabled = false
 }
 
 //artifacts {

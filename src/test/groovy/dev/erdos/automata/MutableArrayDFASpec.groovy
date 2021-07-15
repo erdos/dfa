@@ -1,10 +1,6 @@
 package dev.erdos.automata
 
-import dev.erdos.automata.MutableArrayDFA
-import dev.erdos.automata.NDFA
 import spock.lang.Specification
-
-import static NDFA.levenshtein
 
 class MutableArrayDFASpec extends Specification {
 
