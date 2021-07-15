@@ -1,0 +1,62 @@
+plugins {
+    id 'net.ltgt.errorprone' version '2.0.1'
+    id 'java'
+}
+
+apply plugin: 'java'
+apply plugin: 'net.ltgt.errorprone'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+// apply plugin: 'cobertura'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+group 'dev.erdos'
+version '0.1.0-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+sourceSets {
+    test {
+        groovy.srcDirs = ["src/test/groovy"]
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile('org.codehaus.groovy:groovy:3.0')
+    testCompile "org.spockframework:spock-core:2.0-groovy-3.0"
+}
+
+// used by error-prone
+tasks.withType(JavaCompile) {
+    options.fork = true
+    // options.forkOptions.jvmArgs.add("-Xbootclasspath/p:${configurations.javac.asPath}")
+}
+
+tasks.named("compileTestJava").configure {
+    options.errorprone.enabled = false
+}
+
+//artifacts {
+//    archives sourcesJar
+//}
+
+wrapper {
+    gradleVersion = '6.1.1'
+}
+
+jar {
+    manifest {
+        attributes("Implementation-Version": version)
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
