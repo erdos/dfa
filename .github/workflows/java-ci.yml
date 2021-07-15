@@ -20,4 +20,4 @@ jobs:
       env:
         USERNAME: ${{ secrets.USERNAME }}
         TOKEN: ${{ secrets.TOKEN }}
-      run: gradle publish
+      run: gradle publish -i
