@@ -3,14 +3,10 @@ name: Java CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -20,3 +16,5 @@ jobs:
         distribution: 'adopt'
     - name: Build with Gradle
       run: gradle clean build -i
+    - name: Publish to GPR
+      run: gradle publish
