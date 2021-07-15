@@ -46,7 +46,7 @@ wrapper {
 
 jar {
     manifest {
-        attributes("Implementation-Version": version)
+        attributes('Implementation-Version': version)
     }
 }
 
@@ -57,11 +57,11 @@ test {
 publishing {
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/erdos/dfa")
+            name = 'GitHubPackages'
+            url = uri('https://maven.pkg.github.com/erdos/dfa')
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                username = System.getenv('USERNAME')
+                password = System.getenv('TOKEN')
             }
         }
     }
