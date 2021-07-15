@@ -31,6 +31,7 @@ repositories {
 dependencies {
     testCompile('org.codehaus.groovy:groovy:3.0')
     testCompile "org.spockframework:spock-core:2.0-groovy-3.0"
+    errorprone "com.google.errorprone:error_prone_core:latest.release"
 }
 
 // used by error-prone
