@@ -20,9 +20,9 @@ repositories {
 }
 
 dependencies {
-    testCompile 'org.codehaus.groovy:groovy:3.0.8'
-    testCompile platform('org.spockframework:spock-bom:2.0-groovy-3.0')
-    testCompile 'org.spockframework:spock-core'
+    testImplementation 'org.codehaus.groovy:groovy:3.0.8'
+    testImplementation platform('org.spockframework:spock-bom:2.0-groovy-3.0')
+    testImplementation 'org.spockframework:spock-core'
 }
 
 // used by error-prone
