@@ -18,6 +18,6 @@ jobs:
       run: gradle clean build -i
     - name: Publish to GPR
       env:
-        USERNAME: ${{ secrets.USERNAME }}
+        USERNAME: erdos
         TOKEN: ${{ secrets.TOKEN }}
       run: gradle publish -i
